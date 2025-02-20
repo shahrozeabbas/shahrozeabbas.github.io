@@ -94,6 +94,78 @@
         @keyframes blink {
             50% { opacity: 0; }
         }
+
+        .contact-section {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--accent-dim);
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .section-title {
+            color: var(--accent);
+            font-family: 'Space Mono', monospace;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-family: 'Space Mono', monospace;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--accent-dim);
+            border-radius: 5px;
+            padding: 0.8rem;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .submit-btn {
+            background-color: var(--accent-dim);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Space Mono', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+        }
     </style>
 </head>
 <body>
@@ -101,14 +173,13 @@
         <section class="hero">
             <p class="terminal-text">> initializing_profile.exe<span class="blink">_</span></p>
             <h1>Hi, I'm <span class="accent">Shahroze Abbas</span></h1>
-            <p class="subtitle">Data Scientist | AI Researcher | Developer</p>
+            <p class="subtitle">Data Science | AI | Bioinformatics</p>
             
             <div class="about-section">
                 <h2>> About_Me:</h2>
                 <p>
                     Passionate about leveraging AI and data science to solve complex problems. 
-                    Specializing in machine learning, deep learning, and data analytics to drive 
-                    innovative solutions and extract meaningful insights from data.
+                    Specializing in machine learning, bioinformatics, and generative AI to drive innovative solutions and extract meaningful insights from data.
                 </p>
                 <p class="tech-stack">
                     Tech Stack: [Python, TensorFlow, PyTorch, SQL, Data Visualization, ML/DL]
