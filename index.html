@@ -166,6 +166,52 @@
             background-color: var(--accent);
             color: var(--bg-primary);
         }
+
+        .education-section {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--accent-dim);
+            margin-top: 2rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .education-section h2 {
+            color: var(--accent);
+            font-family: 'Space Mono', monospace;
+            margin-bottom: 1rem;
+        }
+
+        .terminal-window {
+            background-color: var(--bg-primary);
+            border-radius: 5px;
+            padding: 1rem;
+        }
+
+        .degree-entry {
+            cursor: pointer;
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--accent-dim);
+        }
+
+        .degree-entry:last-child {
+            border-bottom: none;
+        }
+
+        .command {
+            font-family: 'Space Mono', monospace;
+            color: var(--terminal-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .degree-details {
+            display: none;
+        }
+
+        .output-line {
+            margin-bottom: 0.25rem;
+        }
     </style>
 </head>
 <body>
@@ -185,7 +231,53 @@
                     Tech Stack: [Python, TensorFlow, PyTorch, SQL, Data Visualization, ML/DL]
                 </p>
             </div>
+
+            <div class="education-section">
+                <h2>> Education_History:</h2>
+                <div class="terminal-window">
+                    <div class="degree-entry" onclick="toggleDetails(this)">
+                        <p class="command">> cat phd_degree.txt<span class="blink">_</span></p>
+                        <div class="degree-details">
+                            <p class="output-line">University: University of XYZ</p>
+                            <p class="output-line">Degree: Ph.D. in Bioinformatics</p>
+                            <p class="output-line">Year: 20XX - Present</p>
+                            <p class="output-line">Focus: AI applications in genomics</p>
+                        </div>
+                    </div>
+                    
+                    <div class="degree-entry" onclick="toggleDetails(this)">
+                        <p class="command">> cat masters_degree.txt<span class="blink">_</span></p>
+                        <div class="degree-details">
+                            <p class="output-line">University: University of ABC</p>
+                            <p class="output-line">Degree: M.Sc. in Data Science</p>
+                            <p class="output-line">Year: 20XX</p>
+                            <p class="output-line">Focus: Machine Learning & Statistical Analysis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
+
+    <script>
+        function toggleDetails(element) {
+            const details = element.querySelector('.degree-details');
+            const allDetails = document.querySelectorAll('.degree-details');
+            
+            // Close all other details
+            allDetails.forEach(detail => {
+                if (detail !== details) {
+                    detail.style.display = 'none';
+                }
+            });
+
+            // Toggle clicked details
+            if (details.style.display === 'block') {
+                details.style.display = 'none';
+            } else {
+                details.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
