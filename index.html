@@ -212,6 +212,17 @@
         .output-line {
             margin-bottom: 0.25rem;
         }
+
+        .section {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--accent-dim);
+            max-width: 800px;
+            width: 100%;
+            margin: 2rem auto;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
@@ -221,7 +232,7 @@
             <h1>Hi, I'm <span class="accent">Shahroze Abbas</span></h1>
             <p class="subtitle">Data Science | AI | Bioinformatics</p>
             
-            <div class="about-section">
+            <div class="about-section section">
                 <h2>> About_Me:</h2>
                 <p>
                     Passionate about leveraging AI and data science to solve complex problems. 
@@ -232,26 +243,26 @@
                 </p>
             </div>
 
-            <div class="education-section">
+            <div class="education-section section">
                 <h2>> Education_History:</h2>
                 <div class="terminal-window">
                     <div class="degree-entry" onclick="toggleDetails(this)">
-                        <p class="command">> cat phd_degree.txt<span class="blink">_</span></p>
+                        <p class="command">> cat ms_degree.txt<span class="blink">_</span></p>
                         <div class="degree-details">
-                            <p class="output-line">University: University of XYZ</p>
-                            <p class="output-line">Degree: Ph.D. in Bioinformatics</p>
-                            <p class="output-line">Year: 20XX - Present</p>
-                            <p class="output-line">Focus: AI applications in genomics</p>
+                            <p class="output-line">University: Virginia Commonwealth University</p>
+                            <p class="output-line">Degree: M.S. in Bioinformatics</p>
+                            <p class="output-line">Year: 2022</p>
+                            <p class="output-line">Focus: single cell</p>
                         </div>
                     </div>
                     
                     <div class="degree-entry" onclick="toggleDetails(this)">
-                        <p class="command">> cat masters_degree.txt<span class="blink">_</span></p>
+                        <p class="command">> cat bs_degree.txt<span class="blink">_</span></p>
                         <div class="degree-details">
-                            <p class="output-line">University: University of ABC</p>
-                            <p class="output-line">Degree: M.Sc. in Data Science</p>
-                            <p class="output-line">Year: 20XX</p>
-                            <p class="output-line">Focus: Machine Learning & Statistical Analysis</p>
+                            <p class="output-line">University: Virginia Commonwealth University</p>
+                            <p class="output-line">Degree:B.S. in Bioinformatics</p>
+                            <p class="output-line">Year: 2015</p>
+                            <p class="output-line">Focus: Biological Sciences</p>
                         </div>
                     </div>
                 </div>
