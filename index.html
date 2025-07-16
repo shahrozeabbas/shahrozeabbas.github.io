@@ -3,18 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shahroze Abbas</title>
+    <title>Shahroze Abbas - Data Science Portfolio</title>
     <!-- Google Fonts - Using Space Mono for hacker feel and Inter for readability -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --bg-primary: #0d1117;
             --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
             --text-primary: #e6edf3;
             --text-secondary: #8b949e;
             --accent: #00ff9d;
             --accent-dim: rgba(0, 255, 157, 0.1);
             --terminal-green: #00ff9d;
+            --border-color: #30363d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -22,37 +36,84 @@
             color: var(--text-primary);
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem;
         }
 
-        .hero {
+        .section {
+            padding: 4rem 0;
             min-height: 100vh;
             display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
-            flex-direction: column;
-            text-align: left;
-            padding-top: 4rem;
+            align-items: center;
         }
 
-        .terminal-text, 
-        .about-section h2,
-        .education-section h2,
-        .section-title {
-            text-align: left;
+        .section-content {
             width: 100%;
         }
 
-        h1, .subtitle {
-            text-align: left;
-            width: 100%;
+        /* Hero Section */
+        .hero {
+            padding-top: 6rem;
         }
 
         .terminal-text {
@@ -64,7 +125,7 @@
 
         h1 {
             font-size: 3.5rem;
-            margin: 0;
+            margin: 0 0 1rem 0;
             font-family: 'Space Mono', monospace;
             text-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
         }
@@ -79,17 +140,66 @@
             margin-bottom: 2rem;
         }
 
-        .about-section {
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-dim);
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Card Styles */
+        .card {
             background-color: var(--bg-secondary);
             padding: 2rem;
             border-radius: 10px;
-            border: 1px solid var(--accent-dim);
-            margin-top: 2rem;
-            max-width: 800px;
-            margin: 2rem auto;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
         }
 
-        .about-section h2 {
+        .section-title {
+            color: var(--accent);
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-card {
+            background-color: var(--bg-tertiary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .about-card h3 {
             color: var(--accent);
             font-family: 'Space Mono', monospace;
             margin-bottom: 1rem;
@@ -99,32 +209,233 @@
             color: var(--text-secondary);
             font-family: 'Space Mono', monospace;
             font-size: 0.9rem;
+            margin-top: 1rem;
         }
 
-        .blink {
-            animation: blink 1s infinite;
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
-        @keyframes blink {
-            50% { opacity: 0; }
+        .skill-category {
+            background-color: var(--bg-tertiary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
         }
 
-        .contact-section {
-            background-color: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid var(--accent-dim);
-            max-width: 800px;
-            margin: 2rem auto;
-        }
-
-        .section-title {
+        .skill-category h3 {
             color: var(--accent);
             font-family: 'Space Mono', monospace;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
 
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .skill-bar {
+            width: 100px;
+            height: 6px;
+            background-color: var(--bg-primary);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: var(--accent);
+            border-radius: 3px;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-tertiary);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 157, 0.1);
+        }
+
+        .project-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .project-title {
+            color: var(--accent);
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background-color: var(--accent-dim);
+            color: var(--accent);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .project-links {
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--accent);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+
+        .experience-card {
+            background-color: var(--bg-tertiary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .experience-title {
+            color: var(--accent);
+            font-family: 'Space Mono', monospace;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .degree-card {
+            background-color: var(--bg-tertiary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .degree-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .command {
+            font-family: 'Space Mono', monospace;
+            color: var(--terminal-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .degree-details {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .degree-details.active {
+            display: block;
+        }
+
+        .output-line {
+            margin-bottom: 0.25rem;
+            color: var(--text-secondary);
+        }
+
+        /* Contact Section */
         .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
@@ -145,7 +456,7 @@
         .form-group select,
         .form-group textarea {
             background-color: var(--bg-primary);
-            border: 1px solid var(--accent-dim);
+            border: 1px solid var(--border-color);
             border-radius: 5px;
             padding: 0.8rem;
             color: var(--text-primary);
@@ -181,110 +492,438 @@
             color: var(--bg-primary);
         }
 
-        .education-section {
-            background-color: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid var(--accent-dim);
-            margin-top: 2rem;
-            max-width: 800px;
-            margin: 2rem auto;
+        /* Animations */
+        .blink {
+            animation: blink 1s infinite;
         }
 
-        .education-section h2 {
-            color: var(--accent);
-            font-family: 'Space Mono', monospace;
-            margin-bottom: 1rem;
+        @keyframes blink {
+            50% { opacity: 0; }
         }
 
-        .terminal-window {
-            background-color: var(--bg-primary);
-            border-radius: 5px;
-            padding: 1rem;
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
         }
 
-        .degree-entry {
-            cursor: pointer;
-            padding: 0.5rem;
-            border-bottom: 1px solid var(--accent-dim);
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .degree-entry:last-child {
-            border-bottom: none;
-        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-primary);
+                flex-direction: column;
+                padding: 1rem;
+                border-top: 1px solid var(--border-color);
+            }
 
-        .command {
-            font-family: 'Space Mono', monospace;
-            color: var(--terminal-green);
-            margin-bottom: 0.5rem;
-        }
+            .nav-links.active {
+                display: flex;
+            }
 
-        .degree-details {
-            display: none;
-        }
+            .mobile-menu-btn {
+                display: block;
+            }
 
-        .output-line {
-            margin-bottom: 0.25rem;
-        }
+            h1 {
+                font-size: 2.5rem;
+            }
 
-        .section {
-            background-color: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid var(--accent-dim);
-            max-width: 800px;
-            width: 100%;
-            margin: 2rem auto;
-            box-sizing: border-box;
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-timeline {
+                padding-left: 1rem;
+            }
+
+            .experience-item {
+                padding-left: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <section class="hero">
-            <p class="terminal-text">> initializing_profile.exe<span class="blink">_</span></p>
-            <h1>Hi, I'm <span class="accent">Shahroze Abbas</span></h1>
-            <p class="subtitle">Data Science | Generative AI | Bioinformatics</p>
-            
-            <div class="about-section section">
-                <h2>> about_me:</h2>
-                <p>
-                    Passionate about leveraging AI and data science to solve complex problems. 
-                    Specializing in machine learning, bioinformatics, and generative AI to drive innovative solutions and extract meaningful insights from data.
-                </p>
-                <p class="tech-stack">
-                    Tech Stack: [Python, R, PyTorch, SQL, Docker, Snakemake]
-                </p>
-            </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">shahroze.dev</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
-            <div class="education-section section">
-                <h2>> education_history:</h2>
-                <div class="terminal-window">
-                    <div class="degree-entry" onclick="toggleDetails(this)">
+    <!-- Hero Section -->
+    <section id="home" class="section hero">
+        <div class="container">
+            <div class="section-content">
+                <p class="terminal-text">> initializing_profile.exe<span class="blink">_</span></p>
+                <h1>Hi, I'm <span class="accent">Shahroze Abbas</span></h1>
+                <p class="subtitle">Data Science | Generative AI | Bioinformatics</p>
+                
+                <div class="social-links">
+                    <a href="https://github.com/shahrozeabbas" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/shahrozeabbas" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:shahroze@example.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Download Resume">
+                        <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2 class="section-title">> about_me:</h2>
+                <div class="card">
+                    <p>
+                        Passionate about leveraging AI and data science to solve complex problems. 
+                        Specializing in machine learning, bioinformatics, and generative AI to drive innovative solutions and extract meaningful insights from data.
+                    </p>
+                    <p class="tech-stack">
+                        Tech Stack: [Python, R, PyTorch, SQL, Docker, Snakemake]
+                    </p>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h3>🔬 Research Focus</h3>
+                        <p>Single-cell genomics, computational biology, and machine learning applications in life sciences.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>🚀 Current Interests</h3>
+                        <p>Generative AI, large language models, and their applications in scientific research and data analysis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2 class="section-title">> technical_skills:</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-item">
+                            <span>Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>R</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>SQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>AI/ML Frameworks</h3>
+                        <div class="skill-item">
+                            <span>PyTorch</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Scikit-learn</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>TensorFlow</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Transformers</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Data Science Tools</h3>
+                        <div class="skill-item">
+                            <span>Pandas</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>NumPy</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Jupyter</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Plotly</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Bioinformatics</h3>
+                        <div class="skill-item">
+                            <span>Scanpy</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Seurat</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Snakemake</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Nextflow</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2 class="section-title">> featured_projects:</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Single-Cell Data Preprocessing</h3>
+                            <p class="project-description">
+                                Comprehensive preprocessing pipeline for single-cell RNA-seq data including quality control, 
+                                normalization, and dimensionality reduction techniques.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Scanpy</span>
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">Matplotlib</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="notebooks/01_preprocessing.html" class="project-link" target="_blank">
+                                <i class="fas fa-eye"></i> View Analysis
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Pseudotime Analysis</h3>
+                            <p class="project-description">
+                                Advanced pseudotime analysis for single-cell data to understand cellular differentiation 
+                                trajectories and developmental processes.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Scanpy</span>
+                                <span class="tech-tag">PAGA</span>
+                                <span class="tech-tag">DPT</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="notebooks/02_pseudotime.html" class="project-link" target="_blank">
+                                <i class="fas fa-eye"></i> View Analysis
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Fraud Detection Analysis</h3>
+                            <p class="project-description">
+                                Machine learning approach to fraud detection using ensemble methods and anomaly detection 
+                                techniques on financial transaction data.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">XGBoost</span>
+                                <span class="tech-tag">Plotly</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="notebooks/FraudAnalysis.html" class="project-link" target="_blank">
+                                <i class="fas fa-eye"></i> View Analysis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2 class="section-title">> work_experience:</h2>
+                <div class="experience-timeline">
+                    <div class="experience-item">
+                        <div class="experience-card">
+                            <h3 class="experience-title">Senior Data Scientist</h3>
+                            <p class="experience-company">Tech Company</p>
+                            <p class="experience-period">2023 - Present</p>
+                            <p>Leading machine learning projects focused on generative AI and natural language processing. 
+                            Developed end-to-end ML pipelines and deployed models to production serving millions of users.</p>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-card">
+                            <h3 class="experience-title">Bioinformatics Analyst</h3>
+                            <p class="experience-company">Research Institute</p>
+                            <p class="experience-period">2022 - 2023</p>
+                            <p>Analyzed single-cell RNA-seq data to understand cellular differentiation processes. 
+                            Developed computational workflows using Snakemake and contributed to high-impact publications.</p>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-card">
+                            <h3 class="experience-title">Data Science Intern</h3>
+                            <p class="experience-company">Biotech Startup</p>
+                            <p class="experience-period">2021 - 2022</p>
+                            <p>Built predictive models for drug discovery using machine learning. 
+                            Worked with multi-omics data and developed interactive visualizations for research teams.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2 class="section-title">> education_history:</h2>
+                <div class="education-grid">
+                    <div class="degree-card" onclick="toggleDetails(this)">
                         <p class="command">> cat ms_degree.txt<span class="blink">_</span></p>
                         <div class="degree-details">
                             <p class="output-line">University: Virginia Commonwealth University</p>
                             <p class="output-line">Degree: M.S. in Bioinformatics</p>
                             <p class="output-line">Year: 2022</p>
-                            <p class="output-line">Focus: Single-cell</p>
+                            <p class="output-line">Focus: Single-cell genomics, computational biology</p>
+                            <p class="output-line">Thesis: "Pseudotime analysis of cellular differentiation"</p>
+                            <p class="output-line">GPA: 3.9/4.0</p>
                         </div>
                     </div>
                     
-                    <div class="degree-entry" onclick="toggleDetails(this)">
+                    <div class="degree-card" onclick="toggleDetails(this)">
                         <p class="command">> cat bs_degree.txt<span class="blink">_</span></p>
                         <div class="degree-details">
                             <p class="output-line">University: Virginia Commonwealth University</p>
-                            <p class="output-line">Degree:B.S. in Bioinformatics</p>
+                            <p class="output-line">Degree: B.S. in Bioinformatics</p>
                             <p class="output-line">Year: 2015</p>
-                            <p class="output-line">Focus: Biological Sciences</p>
+                            <p class="output-line">Focus: Biological Sciences & Computer Science</p>
+                            <p class="output-line">Minor: Statistics</p>
+                            <p class="output-line">Summa Cum Laude</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="contact-section section">
-                <h2 class="command">> contact_me:</h2>
-                <div class="terminal-window">
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2 class="section-title">> contact_me:</h2>
+                <div class="card">
                     <form id="contact-form" class="contact-form">
                         <div class="form-group">
                             <label for="name">> Enter_Name:</label>
@@ -301,6 +940,7 @@
                                 <option value="bioinformatics">Bioinformatics</option>
                                 <option value="data-science">Data Science</option>
                                 <option value="ai-ml">AI/ML</option>
+                                <option value="collaboration">Collaboration</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>
@@ -314,10 +954,63 @@
                     </form>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
     <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinksContainer = document.querySelector('.nav-links');
+
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinksContainer.classList.toggle('active');
+            });
+
+            // Active navigation highlighting
+            function updateActiveNav() {
+                const sections = document.querySelectorAll('.section');
+                const scrollPos = window.scrollY + 100;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
+                        if (activeLink) activeLink.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveNav);
+            
+            // Smooth scrolling for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    // Close mobile menu
+                    navLinksContainer.classList.remove('active');
+                });
+            });
+        });
+
+        // Education section toggle
         function toggleDetails(element) {
             const details = element.querySelector('.degree-details');
             const allDetails = document.querySelectorAll('.degree-details');
@@ -325,17 +1018,42 @@
             // Close all other details
             allDetails.forEach(detail => {
                 if (detail !== details) {
-                    detail.style.display = 'none';
+                    detail.classList.remove('active');
                 }
             });
 
             // Toggle clicked details
-            if (details.style.display === 'block') {
-                details.style.display = 'none';
-            } else {
-                details.style.display = 'block';
-            }
+            details.classList.toggle('active');
         }
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to a server
+            // For now, we'll just show an alert
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Fade in animation for sections
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.card, .project-card, .skill-category, .experience-card, .degree-card');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('fade-in');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
     </script>
 </body>
 </html>
